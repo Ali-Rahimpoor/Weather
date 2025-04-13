@@ -11,7 +11,9 @@ const Weather = () => {
     const data = await FetchWeather(city);
     setWeatherData(data);
   };
-
+  const clickCity=(city)=>{
+    setCity(city);
+  }
   return (
   <>
     <header id='header' className="relative flex items-center justify-center font-Dana-Regular w-full h-[300px] bg-gradient-to-b from-slate-400 to-slate-300 ">
@@ -28,16 +30,17 @@ const Weather = () => {
         <GoChevronDown className="size-5" />
         </button>
         <div id="dropDown-content">
-          <button>تهران</button>
-          <button>مشهد</button>
-          <button>یزد</button>
-          <button>اصفهان</button>
+          <button onClick={(e) => clickCity(e.target.textContent)}>تهران</button>
+          <button onClick={(e)=> clickCity(e.target.textContent)}>مشهد</button>
+          <button onClick={(e)=> clickCity(e.target.textContent)} >یزد</button>
+          <button onClick={(e)=> clickCity(e.target.textContent)} >اصفهان</button>
         </div>
         </div>
       {/* Search */}
       <div 
       className="flex items-center rounded overflow-hidden p-3 bg-slate-50">
         <input 
+        value={city}
         placeholder="نام شهر را وارد کنید"
         type="text" 
         className="bg-slate-50 focus:border-none focus:outline-none w-[300px]" />
