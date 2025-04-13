@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+   
+   @font-face {
+      font-family: "Dana";
+      src: url("/src/assets/font/dana/DanaFaNum-Medium.woff2") format('woff2');
+   }
+   @font-face {
+      font-family: "Dana-Regular";
+      src: url("/src/assets/font/dana/DanaFaNum-Regular.woff2") format('woff2');
+   }
+   @font-face {
+      font-family: "Dana-Bold";
+      src: url("/src/assets/font/dana/DanaFaNum-DemiBold.woff2") format('woff2');
+   }
+   @font-face {
+      font-family: 'Morabba';
+      src: url('/src/assets/font/morraba/Morabba-Medium.woff2') format('woff2') ;
+   }
+   @font-face {
+      font-family: 'Morabba-Light';
+      src: url('/src/assets/font/morraba/Morabba-Light.woff2') format('woff2') ;
+   }
+   @font-face {
+      font-family: 'Morabba-Bold';
+      src: url('/src/assets/font/morraba/Morabba-Bold.woff2') format('woff2') ;
+   }
+   @font-face {
+      font-family: "IranMarker";
+      src: url('/src/assets/font/iranMarker/IRANMarker.ttf') format('truetype') ;
+   }
+  
+}
+@layer components{
+   #dropDown{
+      position: relative;
+      width: 160px;
+      
+   }
+   #dropDown-content{
+      @apply w-[150px] shadow-xl text-gray-500 p-1;
+      /* box-shadow: 0 2px 16px rgba(0,0,0,0.1); */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      opacity: 0;
+      transition: 0.3s all ease-in-out;
+      position: absolute;
+      top:0;
+      visibility: hidden;
+   }
+   #dropDown:hover  #dropDown-content{
+      top: 50px;
+      visibility: visible;
+      opacity: 1;
+  }
+}
