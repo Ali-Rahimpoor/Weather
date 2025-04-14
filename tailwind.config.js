@@ -14,6 +14,9 @@ module.exports = {
       },
       container:{
         center:true
+      },
+      screens:{
+        "xs":"440px"
       }
     },
   },
