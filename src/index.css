@@ -36,26 +36,12 @@
 }
 @layer components{
    #dropDown{
-      position: relative;
-      width: 160px;
-      
+      @apply relative w-[160px];
    }
    #dropDown-content{
-      @apply w-[150px] shadow-xl text-gray-500 p-1;
-      /* box-shadow: 0 2px 16px rgba(0,0,0,0.1); */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      opacity: 0;
-      transition: 0.3s all ease-in-out;
-      position: absolute;
-      top:0;
-      visibility: hidden;
+      @apply w-[150px] shadow-xl text-gray-500 p-1  flex-col items-center gap-1 opacity-0 transition-all absolute top-0 hidden;
    }
    #dropDown:hover  #dropDown-content{
-      top: 50px;
-      visibility: visible;
-      opacity: 1;
+      @apply flex visible top-12 opacity-100;
   }
 }

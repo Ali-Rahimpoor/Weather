@@ -1,96 +1,84 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { FetchWeather } from "./FetchWeather";
-import {ReactComponent as Logo} from '../assets/svgs/undraw_cabin_7fei.svg'
-import { CiSearch } from "react-icons/ci";
-import { GoChevronDown } from "react-icons/go";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 const Weather = () => {
-  const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
+  const {city} = useParams();
+  const [weatherData,setWeatherData] = useState(null)
+  const [loading,setLoading] = useState(true);
+  const [error,setError] = useState(null);
 
-  const getWeather = async () => {
-    const data = await FetchWeather(city);
-    setWeatherData(data);
-  };
-  const clickCity=(city)=>{
-    setCity(city);
+  useEffect(()=>{
+    const getWeather = async ()=>{
+      try{
+      const data = await FetchWeather(city);
+      setWeatherData(data);
+      setError(null);
+    }catch(err){
+      setError("خطا در دریافت اطلاعات آّب و هوا");
+      console.error("FetchERR"+err)
+    }finally{
+      setLoading(false);
+    }
+     }
+     if(city){
+      getWeather();
+     }
+  },[city])
+
+  if(loading){
+    return <div>LOADING...</div>
   }
+  if(error){
+    return <div>ERROR...</div>
+  }
+  if(!weatherData){
+    return <div>NOT FOUND</div>
+  }
+
   return (
-  <>
-    <header id='header' className="relative flex items-center justify-center font-Dana-Regular w-full h-[300px] bg-gradient-to-b from-slate-400 to-slate-300 ">
-      {/* Logo absolute*/}
-      <div className="absolute left-10 top-3  hover:opacity-90 cursor-pointer" >
-      <Logo className="size-24" />
-      <h6 className="font-mono tracking-tighter text-gray-800" >Show Weather</h6>
+    <div className="container mx-auto p-4">
+      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+        {/* اطلاعات آب و هوا */}
+        {weatherData.weather && (
+          <div className="p-6">
+            <h2 className="text-2xl font-bold text-gray-800">
+              آب و هوا در {weatherData.weather.name}
+            </h2>
+            
+            <div className="flex items-center mt-4">
+              <div className="text-5xl font-bold text-blue-600">
+                {Math.round(weatherData.weather.main.temp)}°C
+              </div>
+              <div className="ml-4">
+                <p className="text-gray-600">
+                  {weatherData.weather.weather[0].description}
+                </p>
+                <p className="text-gray-600">
+                  رطوبت: {weatherData.weather.main.humidity}%
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* اطلاعات آلودگی هوا */}
+        {weatherData.air && weatherData.air.list && weatherData.air.list.length > 0 && (
+          <div className="bg-gray-100 p-6">
+            <h3 className="text-xl font-semibold text-gray-800">کیفیت هوا</h3>
+            <div className="mt-2">
+              <p className="text-gray-600">
+                شاخص کیفیت هوا (AQI): {weatherData.air.list[0].main.aqi}
+              </p>
+              <p className="text-sm text-gray-500 mt-2">
+                ۱: عالی | ۲: خوب | ۳: متوسط | ۴: بد | ۵: خیلی بد
+              </p>
+            </div>
+          </div>
+        )}
       </div>
-      
-      {/* Selection */}
-      <div id="dropDown">
-      <button  className="flex items-center text-gray-600 bg-sky-200 p-3 ml-2 rounded" >
-        شهر های محبوب
-        <GoChevronDown className="size-5" />
-        </button>
-        <div id="dropDown-content">
-          <button onClick={(e) => clickCity(e.target.textContent)}>تهران</button>
-          <button onClick={(e)=> clickCity(e.target.textContent)}>مشهد</button>
-          <button onClick={(e)=> clickCity(e.target.textContent)} >یزد</button>
-          <button onClick={(e)=> clickCity(e.target.textContent)} >اصفهان</button>
-        </div>
-        </div>
-      {/* Search */}
-      <div 
-      className="flex items-center rounded overflow-hidden p-3 bg-slate-50">
-        <input 
-        value={city}
-        placeholder="نام شهر را وارد کنید"
-        type="text" 
-        className="bg-slate-50 focus:border-none focus:outline-none w-[300px]" />
-        <CiSearch className="size-6 transition-all hover:size-7 cursor-pointer " />
-      </div>
-    </header>
-    <main>
-
-    </main>
-
-
-
-
-
-  </>
+    </div>
   );
-      {/* <h1>بررسی آب و هوای شهر</h1>
-      <input
-        type="text"
-        placeholder="نام شهر را وارد کنید"
-        value={city}
-        onChange={e => setCity(e.target.value)}
-      />
-      <button onClick={getWeather}>جستجو</button>
-
-      {weatherData ? (
-        <>
-          {weatherData.weather && weatherData.weather.main && (
-            <div>
-              <h3>آب‌و‌هوا در {weatherData.weather.name}</h3>
-              <p>دما: {weatherData.weather.main.temp}°C</p>
-              <p>توضیح: {weatherData.weather.weather[0].description}</p>
-            </div>
-          )}
-
-          {weatherData.air && weatherData.air.list && weatherData.air.list.length > 0 && (
-            <div>
-              <h3>آلودگی هوا</h3>
-              <p>شاخص کیفیت هوا (AQI): {weatherData.air.list[0].main.aqi}</p>
-              <p>1 عالی</p>
-              <p>2 خوب</p>
-              <p>3 متوسط</p>
-              <p>4 بد</p>
-              <p>5 خیلی بد</p>
-            </div>
-          )}
-        </>
-      ) : (
-        <p>در حال دریافت اطلاعات...</p>
-      )} */}
-   
 };
+
 export default Weather;
