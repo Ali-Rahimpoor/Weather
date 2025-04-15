@@ -17,7 +17,8 @@ const Weather = () => {
       try{
       setLoading(true);
       const data = await FetchWeather(city);
-      setWeatherData(data);
+      setWeatherData(data.weather);
+      console.log(data.weather)
       setError(null);
     }catch(err){
       setError("خطا در دریافت اطلاعات آّب و هوا");
@@ -41,10 +42,49 @@ const Weather = () => {
     return <NotFound/>
   }
 
+  const iconCode = weatherData.weather[0].icon;
+  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+  const getHumidityStatus = (humidity)=>{
+    if(humidity < 30 ) return "خشک";
+    if(humidity < 50) return "متوسط";
+    if(humidity < 70) return "مرطوب";
+    return "خیلی مرطوب";}
+
+    const sunriseTime = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString();
+    const sunsetTime = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString();
   return (
-    <>
-    
-    </>
+    <section className=" mt-3 shadow bg-slate-50 p-4 font-Dana-Regular w-[768px] mx-auto ">
+      <h1 className="text-center text-xl mt-5" >اطلاعات آب و هوای 
+        <span className="font-Dana-Bold text-2xl" > {weatherData.name}</span>
+      </h1>
+      {/* Temperature */}
+      <div>
+        <p>دما : 
+        <span>{Math.round(weatherData.main.temp)} °C</span>
+        </p>
+        <p>وضعیت رطوبت:
+          <span> {getHumidityStatus(weatherData.main.humidity)}
+          </span>
+        </p>
+        <p>سرعت باد : {Math.round(weatherData.wind.speed)}m/s</p>
+        <div className="flex items-center" >شرایط جوی:
+          <span> {weatherData.weather[0].description}</span>
+          <img 
+           className="w-16 h-16"
+            src={iconUrl} 
+            alt={iconCode} 
+           />
+        </div>
+        <div>
+          <p>طلوع خورشید: 
+            <span>{sunriseTime}</span>
+          </p>
+          <p>غروب خورشید :
+            <span>{sunsetTime}</span>
+          </p>
+        </div>
+      </div>
+    </section>
   );
     // <div className="container mx-auto p-4">
     //   <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
