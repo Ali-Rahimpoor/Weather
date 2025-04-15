@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./fragment/Loading";
 import NotFound from "./fragment/NotFound";
 import Error from "./fragment/Error";
+import { LuSunMedium } from "react-icons/lu";
 const Weather = () => {
   // const params = useParams();
   // const city = params.city;
@@ -53,21 +54,34 @@ const Weather = () => {
     const sunriseTime = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString();
     const sunsetTime = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString();
   return (
-    <section className=" mt-3 shadow bg-slate-50 p-4 font-Dana-Regular w-[768px] mx-auto ">
+    <section className="text-gray-800 mt-3 shadow bg-slate-50 p-4 font-Dana-Regular w-[768px] mx-auto ">
+      <header>
       <h1 className="text-center text-xl mt-5" >اطلاعات آب و هوای 
         <span className="font-Dana-Bold text-2xl" > {weatherData.name}</span>
       </h1>
-      {/* Temperature */}
-      <div>
-        <p>دما : 
-        <span>{Math.round(weatherData.main.temp)} °C</span>
-        </p>
-        <p>وضعیت رطوبت:
-          <span> {getHumidityStatus(weatherData.main.humidity)}
-          </span>
-        </p>
-        <p>سرعت باد : {Math.round(weatherData.wind.speed)}m/s</p>
-        <div className="flex items-center" >شرایط جوی:
+      </header>
+      <main>
+      {/* Temperature & Wind & Humidity */}
+        <div className="flex flex-col items-center justify-center">
+          {/* Temp */}
+          <div className="text-3xl shadow-xl bg-gradient-to-tr from-slate-100 to-slate-200 rounded-xl p-8 my-5 text-gray-700 font-Dana">
+            <p>دما : 
+              <span>{Math.round(weatherData.main.temp)} °C</span>
+            </p>
+          </div>
+          {/* Hum & Wind */}
+          <div className="flex gap-x-10 items-center text-xl my-2 font-Morabba-Light">
+            <p>وضعیت رطوبت :
+              <span> {getHumidityStatus(weatherData.main.humidity)}
+              </span>
+            </p>
+            <p>سرعت باد : 
+                <span> {Math.round(weatherData.wind.speed)}m/s</span>
+            </p>
+          </div>
+        </div>
+        {/* Weather */}
+        <div className="justify-center my-2 text-xl flex items-center" >شرایط جوی :
           <span> {weatherData.weather[0].description}</span>
           <img 
            className="w-16 h-16"
@@ -75,59 +89,27 @@ const Weather = () => {
             alt={iconCode} 
            />
         </div>
-        <div>
+      </main>
+      <footer>
+        <div className="flex justify-between items-center px-2 mt-5">
+          {/* Sunrise & Sunset */}
+        <div className="flex items-center text-gray-600 gap-x-1">
+          <LuSunMedium className="size-14" />
+          <div className="text-xl  child:tracking-wide font-Morabba-Light">
           <p>طلوع خورشید: 
             <span>{sunriseTime}</span>
           </p>
           <p>غروب خورشید :
             <span>{sunsetTime}</span>
           </p>
+          </div>
         </div>
-      </div>
+        {/* More Data */}
+        <p className="ml-5 font-Dana text-sky-900 p-3 bg-sky-50">اطلاعات بیشتر</p>
+        </div>
+      </footer>
     </section>
   );
-    // <div className="container mx-auto p-4">
-    //   <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-    //     {/* اطلاعات آب و هوا */}
-    //     {weatherData.weather && (
-    //       <div className="p-6">
-    //         <h2 className="text-2xl font-bold text-gray-800">
-    //           آب و هوا در {weatherData.weather.name}
-    //         </h2>
-            
-    //         <div className="flex items-center mt-4">
-    //           <div className="text-5xl font-bold text-blue-600">
-    //             {Math.round(weatherData.weather.main.temp)}°C
-    //           </div>
-    //           <div className="ml-4">
-    //             <p className="text-gray-600">
-    //               {weatherData.weather.weather[0].description}
-    //             </p>
-    //             <p className="text-gray-600">
-    //               رطوبت: {weatherData.weather.main.humidity}%
-    //             </p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     )}
-
-    //     {/* اطلاعات آلودگی هوا */}
-    //     {weatherData.air && weatherData.air.list && weatherData.air.list.length > 0 && (
-    //       <div className="bg-gray-100 p-6">
-    //         <h3 className="text-xl font-semibold text-gray-800">کیفیت هوا</h3>
-    //         <div className="mt-2">
-    //           <p className="text-gray-600">
-    //             شاخص کیفیت هوا (AQI): {weatherData.air.list[0].main.aqi}
-    //           </p>
-    //           <p className="text-sm text-gray-500 mt-2">
-    //             ۱: عالی | ۲: خوب | ۳: متوسط | ۴: بد | ۵: خیلی بد
-    //           </p>
-    //         </div>
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
-  
 };
 
 export default Weather;
