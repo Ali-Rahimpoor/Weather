@@ -54,23 +54,23 @@ const Weather = () => {
     const sunriseTime = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString();
     const sunsetTime = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString();
   return (
-    <section className="text-gray-800 mt-3 shadow bg-slate-50 p-4 font-Dana-Regular w-[768px] mx-auto ">
+    <section className="text-gray-800 md:mt-3 shadow bg-blue-300 p-4 font-Dana-Regular w-full md:w-[768px] mx-auto ">
       <header>
-      <h1 className="text-center text-xl mt-5" >اطلاعات آب و هوای 
-        <span className="font-Dana-Bold text-2xl" > {weatherData.name}</span>
+      <h1 className="text-center text-lg sm:text-xl mt-3 sm:mt-5" >اطلاعات آب و هوای 
+        <span className="font-Dana-Bold text-xl sm:text-2xl" > {weatherData.name}</span>
       </h1>
       </header>
       <main>
       {/* Temperature & Wind & Humidity */}
         <div className="flex flex-col items-center justify-center">
           {/* Temp */}
-          <div className="text-3xl shadow-xl bg-gradient-to-tr from-slate-100 to-slate-200 rounded-xl p-8 my-5 text-gray-700 font-Dana">
+          <div className="sm:text-3xl text-xl shadow bg-gradient-to-tr from-blue-200 to-blue-300 rounded-xl sm:py-6 sm:px-8 px-4 py-5 my-5 text-gray-700 font-Dana sm:hover:shadow-xl sm:transition-all sm:cursor-none">
             <p>دما : 
               <span>{Math.round(weatherData.main.temp)} °C</span>
             </p>
           </div>
           {/* Hum & Wind */}
-          <div className="flex gap-x-10 items-center text-xl my-2 font-Morabba-Light">
+          <div className="flex sm:flex-row flex-col gap-y-3 sm:gap-x-10 items-center text-xl my-2 font-Morabba-Light">
             <p>وضعیت رطوبت :
               <span> {getHumidityStatus(weatherData.main.humidity)}
               </span>
@@ -91,11 +91,11 @@ const Weather = () => {
         </div>
       </main>
       <footer>
-        <div className="flex justify-between items-center px-2 mt-5">
+        <div className="flex justify-between items-center sm:px-2 mt-5">
           {/* Sunrise & Sunset */}
         <div className="flex items-center text-gray-600 gap-x-1">
-          <LuSunMedium className="size-14" />
-          <div className="text-xl  child:tracking-wide font-Morabba-Light">
+          <LuSunMedium className="sm:size-14 size-8" />
+          <div className="sm:text-xl text-sm  child:tracking-wide font-Morabba-Light">
           <p>طلوع خورشید: 
             <span>{sunriseTime}</span>
           </p>
@@ -105,7 +105,7 @@ const Weather = () => {
           </div>
         </div>
         {/* More Data */}
-        <p className="ml-5 font-Dana text-sky-900 p-3 bg-sky-50">اطلاعات بیشتر</p>
+        <p className="sm:ml-5 font-Dana text-sky-900 p-1 sm:p-3 bg-blue-200 rounded-sm shadow-sm text-sm sm:text-base cursor-not-allowed">اطلاعات بیشتر</p>
         </div>
       </footer>
     </section>

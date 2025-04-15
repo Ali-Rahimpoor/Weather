@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-     <header id='header' className="relative flex items-center justify-center font-Dana-Regular w-full h-[200px] sm:h-[300px] bg-gradient-to-b from-slate-400 to-slate-300 ">
+     <header id='header' className="relative flex items-center justify-center font-Dana-Regular w-full h-[200px] sm:h-[300px] bg-gradient-to-b from-blue-100 to-blue-300 ">
         {/* Logo*/}
         <div className="absolute left-10 top-3  hover:opacity-90 cursor-pointer" >
           <Logo className="lg:size-28  md:size-20 size-12 " onClick={restart} />
