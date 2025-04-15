@@ -36,6 +36,7 @@ const Search = ({onCitySelect})=>{
           <button onClick={(e)=> selectCity(e.target.textContent)}>مشهد</button>
           <button onClick={(e)=> selectCity(e.target.textContent)} >یزد</button>
           <button onClick={(e)=> selectCity(e.target.textContent)} >اصفهان</button>
+          <button onClick={(e)=> selectCity(e.target.textContent)} >سبزوار</button>
           <button onClick={(e)=> selectCity(e.target.textContent)} >قم</button>
           <button onClick={(e)=> selectCity(e.target.textContent)} >دبی</button>
           <button onClick={(e)=> selectCity(e.target.textContent)} >تربت حیدریه</button>
