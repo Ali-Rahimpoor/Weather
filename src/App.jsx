@@ -25,7 +25,7 @@ function App() {
         {/* SearchInput & DropDownSelection*/}
         <Search onCitySelect={handleCitySelect} />
      </header>
-     <main className="h-[62vh]">
+     <main className="h-[60vh]">
       <Routes>
         <Route 
         path="weather/:city" 
@@ -35,7 +35,7 @@ function App() {
         element={<Home/>}/>
       </Routes>
      </main>
-     <footer className="bg-gray-800 sm:h-auto w-full text-white p-4">
+     <footer className="fixed bottom-0 -z-10 bg-gray-800 sm:h-auto w-full text-white  p-4">
       <div className="flex xs:flex-row flex-col justify-between text-xs sm:text-base items-center">
         <small>ساخته شده توسط علی رحیم پور</small>
         <small className="">Copyright © 2025 AliRahimpoor® All rights reserved</small>

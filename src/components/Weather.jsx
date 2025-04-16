@@ -2,7 +2,6 @@ import { useState,useEffect } from "react";
 import { FetchWeather } from "./FetchWeather";
 import { useParams } from "react-router-dom";
 import Loading from "./fragment/Loading";
-import NotFound from "./fragment/NotFound";
 import Error from "./fragment/Error";
 import { LuSunMedium } from "react-icons/lu";
 const Weather = () => {
@@ -19,7 +18,6 @@ const Weather = () => {
       setLoading(true);
       const data = await FetchWeather(city);
       setWeatherData(data.weather);
-      console.log(data.weather)
       setError(null);
     }catch(err){
       setError("خطا در دریافت اطلاعات آّب و هوا");
@@ -40,7 +38,7 @@ const Weather = () => {
     return <Error/>
   }
   if(!weatherData){
-    return <NotFound/>
+    return <Error/>
   }
 
   const iconCode = weatherData.weather[0].icon;
