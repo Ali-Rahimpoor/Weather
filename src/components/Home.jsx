@@ -36,7 +36,7 @@ const Home = ()=>{
                value='imperial'
                checked={selectedUnit==="imperial"}
                disabled
-               onChange={e=>setSelectedUnit(e.   target.value)}
+               onChange={e=>setSelectedUnit(e.target.value)}
                />
                <span> فارنهایت </span>
             </div> 
@@ -59,7 +59,7 @@ const Home = ()=>{
                <div className="border-t-2 flex-grow"></div>
             </div>
 
-            <h1 className=" p-4 text-xl font-Dana" >به زودی</h1>
+            <h1 className=" p-6  text-xl font-Dana" >به زودی</h1>
 
          </div>
 

@@ -5,8 +5,6 @@ import Loading from "./fragment/Loading";
 import Error from "./fragment/Error";
 import { LuSunMedium } from "react-icons/lu";
 const Weather = () => {
-  // const params = useParams();
-  // const city = params.city;
   const {city} = useParams();
   const [weatherData,setWeatherData] = useState(null)
   const [loading,setLoading] = useState(true);

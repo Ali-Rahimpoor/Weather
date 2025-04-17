@@ -31,7 +31,7 @@ const Search = ({onCitySelect})=>{
       <button  className="flex items-center text-gray-600 bg-sky-200 px-2 py-3 ml-2 rounded sm:text-base text-xs rounded-b-none" >
         <span className="sm:inline hidden">شهر های محبوب</span>
         <span className="sm:hidden inline">انتخاب</span>
-        <GoChevronDown className="sm:size-5 size-4" />
+        <GoChevronDown id='chevron' className="sm:size-5 size-4 transition-transform" />
         </button>
         <div id="dropDown-content">
           <button onClick={(e) => selectCity(e.target.textContent)}>تهران</button>

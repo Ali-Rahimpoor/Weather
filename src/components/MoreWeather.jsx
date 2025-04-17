@@ -80,11 +80,12 @@ const MoreWeather = ()=>{
 
  return (
    <section className="text-gray-800 overflow-y-scroll h-full md:mt-3 shadow bg-blue-300 p-4 font-Dana-Regular w-full md:w-[760px] lg:w-[900px] mx-auto">
-      <header className=" line-clamp-1 p-3 rounded text-center text-xs xs:text-base md:text-lg text-gray-700 bg-white/20">
-         <p>بررسی دقیق تر <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.name}</span> از <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.country}</span> با جمعیت <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.population} نفر</span></p>
+      <header className=" line-clamp-1 p-3 rounded text-center text-base md:text-lg text-gray-700 bg-white/20">
+         <p>بررسی دقیق تر <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.name}</span> از <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.country}</span>
+         </p>
       </header>
-      <main className="md:mt-5 mt-2 p-1">
-         <div className="flex flex-col gap-y-5 md:flex-row items-center justify-between">
+      <main className="md:mt-5 mt-3 p-1">
+         <div className="flex flex-col gap-y-6 md:flex-row items-center justify-between">
             {/* Pollution */}
             <div className="border-r md:flex-grow p-2 gap-x-10 md:gap-x-0 md:px-10 flex justify-between">
              
@@ -93,11 +94,11 @@ const MoreWeather = ()=>{
                      <h1 className="md:text-lg text-sm xs:block hidden font-Dana">شاخص آلودگی هوا</h1>
                      <img 
                      src={GifURLPollution} 
-                     className="md:size-20 mx-auto size-14" 
+                     className="md:size-24 mx-auto size-16" 
                      alt="" />
                   </div>
                   <h2 className="md:text-lg xs:text-base text-xs md:text-right text-center  mb-2">وضعیت کیفیت هوا 
-                  <span className="block md:inline md:text-right text-center">َ {AirQuality(weatherData.air.list[0].main.aqi)} </span>
+                  <span className="block md:inline md:text-right text-center"> {AirQuality(weatherData.air.list[0].main.aqi)} </span>
                   </h2>
                </div>
                {/* btn */}
@@ -108,21 +109,21 @@ const MoreWeather = ()=>{
                   {showDetails ? 'مخفی کردن اطلاعات' : 'اطلاعات بیشتر'}
                   </button>
 
-                  <div className={`transition-opacity duration-300 xs:text-xs text-[9px] ${showDetails ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
-                  <p className="mt-1 flex justify-between">مقدار کربن مونوکسید: 
+                  <div className={`transition-opacity duration-300 xs:text-[10px] text-[9px] ${showDetails ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
+                  <p className="mt-1 flex justify-between">مقدار کربن مونوکسید 
                      <span className="font-Dana-Bold"> {weatherData.air.list[0].components.co} μg/m³</span>
                   </p>
-                  <p className="flex justify-between" >مقدار گوگرد دی اکسید: 
+                  <p className="flex justify-between" >مقدار گوگرد دی اکسید
                      <span className="font-Dana-Bold"> {weatherData.air.list[0].components.so2} μg/m³</span>
                   </p>
-                  <p className="flex justify-between" >مقدار نیتروژن دی اکسید : 
-                     <span className="font-Dana-Bold"> {weatherData.air.list[0].components.no2} μg/m³</span>
+                  <p className="flex justify-between" >مقدار نیتروژن دی اکسید
+                     <span className="font-Dana-Bold">{weatherData.air.list[0].components.no2} μg/m³</span>
                   </p>
-                  <p className="flex justify-between" >مقدار نیتروژن مونوکسید : 
-                     <span className="font-Dana-Bold"> {weatherData.air.list[0].components.no} μg/m³</span>
+                  <p className="flex justify-between" >مقدار نیتروژن مونوکسید
+                     <span className="font-Dana-Bold">{weatherData.air.list[0].components.no} μg/m³</span>
                   </p>
-                  <p className="flex justify-between" >مقدار گاز اوزون: 
-                     <span className="font-Dana-Bold"> {weatherData.air.list[0].components.o3} μg/m³</span>
+                  <p className="flex justify-between" >مقدار گاز اوزون
+                     <span className="font-Dana-Bold">{weatherData.air.list[0].components.o3} μg/m³</span>
                   </p>
                   </div>
                </div>
@@ -134,7 +135,7 @@ const MoreWeather = ()=>{
             </div>
          </div>
          {/* Forecast */}
-        <div className="mt-5">
+        <div className="mt-1 xs:mt-5">
             <div className="flex flex-col md:flex-row items-center  md:items-stretch justify-between">
             <ForecastSVG className="md:w-[350px] w-[250px] md:mt-0 mt-6  h-[150px] md:h-[110px] lg:h-[130px] mx-auto" />
             <h1 className="md:flex hidden md:text-lg lg:text-3xl text-gray-200 mr-32 lg:px-16 md:px-12 px-14 rounded  items-center justify-center font-Dana bg-blue-600/20">پیش بینی آب و هوا
@@ -143,7 +144,7 @@ const MoreWeather = ()=>{
             </div>
 
                {/* AI */}
-            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="mt-5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
             {Object.entries(dailyForecast).map(([date, items], index) => {
             const avgTemp = items.reduce((acc, item) => acc + item.main.temp, 0) / items.length;
             // most weather conditions

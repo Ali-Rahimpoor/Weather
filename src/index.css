@@ -44,4 +44,7 @@
    #dropDown:hover  #dropDown-content{
       @apply flex visible sm:top-12 top-10 opacity-100;
   }
+  #dropDown:hover #chevron{
+    @apply rotate-180
+  }
 }
