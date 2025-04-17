@@ -3,6 +3,7 @@ import {ReactComponent as Logo} from './assets/svgs/undraw_cabin_7fei.svg'
 import Search from "./components/Search";
 import {Routes,Route,useNavigate} from "react-router-dom";
 import Home from "./components/Home";
+import MoreWeather from "./components/MoreWeather";
 function App() {
   const navigate = useNavigate();
 
@@ -25,11 +26,13 @@ function App() {
         {/* SearchInput & DropDownSelection*/}
         <Search onCitySelect={handleCitySelect} />
      </header>
-     <main className="h-[60vh]">
+     <main className="h-[60vh] ">
       <Routes>
         <Route 
         path="weather/:city" 
         element={<Weather/>} />
+        <Route 
+        path="weather/:city/moreData" element={<MoreWeather/>} />
         <Route 
         path="/" 
         element={<Home/>}/>

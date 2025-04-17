@@ -16,11 +16,13 @@ const Search = ({onCitySelect})=>{
          onCitySelect(city);
       }
     }
-   //  const handleKeyPress = (e)=>{
-   //    if(e.target==="Enter"){
-   //       searchCity();
-   //    }
-   //  };
+    const handleKeyPress = (e)=>{
+      if(e.key==="Enter"){
+         searchCity();
+      }
+    };
+
+   
 
    return(
       <div className="flex items-center justify-between gap-x-1">
@@ -49,7 +51,7 @@ const Search = ({onCitySelect})=>{
         <input 
         value={city}
         onChange={e=>setCity(e.target.value)}
-    
+        onKeyDown={handleKeyPress}
         placeholder="نام شهر را وارد کنید"
         type="text" 
         className="bg-slate-50 focus:border-none focus:outline-none sm:w-[300px]" />

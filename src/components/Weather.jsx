@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import { FetchWeather } from "./FetchWeather";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import Loading from "./fragment/Loading";
 import Error from "./fragment/Error";
 import { LuSunMedium } from "react-icons/lu";
@@ -103,7 +103,7 @@ const Weather = () => {
           </div>
         </div>
         {/* More Data */}
-        <p className="sm:ml-5 font-Dana text-sky-900 p-1 sm:p-3 bg-blue-200 rounded-sm shadow-sm text-sm sm:text-base cursor-not-allowed">اطلاعات بیشتر</p>
+        <Link to={'moreData'} className="sm:ml-5 font-Dana text-sky-900 p-1 sm:p-3 bg-blue-200 rounded-sm shadow-sm text-sm sm:text-base ">اطلاعات بیشتر</Link>
         </div>
       </footer>
     </section>
