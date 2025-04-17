@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Weather/static/css/main.ffa2a140.css",
+    "main.js": "/Weather/static/js/main.6911919e.js",
+    "static/media/Animation - 1744872073203.gif": "/Weather/static/media/Animation - 1744872073203.ee1267caa32802018492.gif",
+    "static/media/IRANMarker.ttf": "/Weather/static/media/IRANMarker.bc959ee914f530ff6e61.ttf",
+    "static/media/DanaFaNum-DemiBold.woff2": "/Weather/static/media/DanaFaNum-DemiBold.606ee4ede1f9de62b0bc.woff2",
+    "static/media/DanaFaNum-Regular.woff2": "/Weather/static/media/DanaFaNum-Regular.cd89c4bbb5d68d78d5fd.woff2",
+    "static/media/DanaFaNum-Medium.woff2": "/Weather/static/media/DanaFaNum-Medium.3c7fcbd8ab0682219f68.woff2",
+    "static/media/undraw_page-not-found_6wni.svg": "/Weather/static/media/undraw_page-not-found_6wni.dbab4437e895b995e896588c3ef2eb5c.svg",
+    "static/media/Morabba-Bold.woff2": "/Weather/static/media/Morabba-Bold.c2226cdf6963e1c9d6a3.woff2",
+    "static/media/Morabba-Medium.woff2": "/Weather/static/media/Morabba-Medium.f43b343a3fdab75d4ad7.woff2",
+    "static/media/Morabba-Light.woff2": "/Weather/static/media/Morabba-Light.c98a9f827e3473976008.woff2",
+    "static/media/undraw_weather_7n28.svg": "/Weather/static/media/undraw_weather_7n28.0841201960c3f9313e484b560412e1b9.svg",
+    "static/media/undraw_cabin_7fei.svg": "/Weather/static/media/undraw_cabin_7fei.abca005eab0ed08f03e56c190b3d94fe.svg",
+    "index.html": "/Weather/index.html",
+    "main.ffa2a140.css.map": "/Weather/static/css/main.ffa2a140.css.map",
+    "main.6911919e.js.map": "/Weather/static/js/main.6911919e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ffa2a140.css",
+    "static/js/main.6911919e.js"
+  ]
+}
