@@ -26,7 +26,7 @@ function App() {
         {/* SearchInput & DropDownSelection*/}
         <Search onCitySelect={handleCitySelect} />
      </header>
-     <main className="h-[60vh] ">
+     <main className=" h-[63vh] md:h-[60vh] ">
       <Routes>
         <Route 
         path="weather/:city" 

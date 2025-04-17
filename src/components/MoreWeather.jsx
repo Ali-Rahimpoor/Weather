@@ -43,7 +43,7 @@ const MoreWeather = ()=>{
    if(!weatherData){
       return(<Error/>)
    }
-      console.log(weatherData);
+    
  
  // if do not have Forecast Show null
  if (!weatherData?.forecast?.list) return null;
@@ -79,36 +79,36 @@ const MoreWeather = ()=>{
    }
 
  return (
-   <section className="text-gray-800 overflow-y-scroll h-full md:mt-3 shadow bg-blue-300 p-4 font-Dana-Regular w-full lg:w-[900px] mx-auto">
-      <header className=" p-3 rounded text-center text-lg text-gray-700 bg-white/20">
+   <section className="text-gray-800 overflow-y-scroll h-full md:mt-3 shadow bg-blue-300 p-4 font-Dana-Regular w-full md:w-[760px] lg:w-[900px] mx-auto">
+      <header className=" line-clamp-1 p-3 rounded text-center text-xs xs:text-base md:text-lg text-gray-700 bg-white/20">
          <p>بررسی دقیق تر <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.name}</span> از <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.country}</span> با جمعیت <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.population} نفر</span></p>
       </header>
-      <main className="mt-5 p-1">
-         <div className="flex flex-row items-center justify-between">
+      <main className="md:mt-5 mt-2 p-1">
+         <div className="flex flex-col gap-y-5 md:flex-row items-center justify-between">
             {/* Pollution */}
-            <div className="border-r flex-grow p-1  px-10 flex justify-between">
+            <div className="border-r md:flex-grow p-2 gap-x-10 md:gap-x-0 md:px-10 flex justify-between">
              
                <div>
-                  <div className="flex items-center mb-5 gap-x-2">
-                     <h1 className="text-lg font-Dana">شاخص آلودگی هوا</h1>
+                  <div className="flex items-center mb-5 md:gap-x-2">
+                     <h1 className="md:text-lg text-sm xs:block hidden font-Dana">شاخص آلودگی هوا</h1>
                      <img 
                      src={GifURLPollution} 
-                     className="size-20" 
+                     className="md:size-20 mx-auto size-14" 
                      alt="" />
                   </div>
-                  <h2 className="text-lg mb-2">وضعیت کیفیت هوا :
-                  <span>َ {AirQuality(weatherData.air.list[0].main.aqi)} </span>
+                  <h2 className="md:text-lg xs:text-base text-xs md:text-right text-center  mb-2">وضعیت کیفیت هوا 
+                  <span className="block md:inline md:text-right text-center">َ {AirQuality(weatherData.air.list[0].main.aqi)} </span>
                   </h2>
                </div>
                {/* btn */}
                <div>
                   <button 
                   onClick={toggleDetails}
-                  className="bg-blue-400/50 w-full text-gray-700 px-2 py-1 rounded mt-2">
+                  className="bg-blue-400/50 w-full sm:text-base text-sm text-gray-700 px-2 py-1 rounded mt-2">
                   {showDetails ? 'مخفی کردن اطلاعات' : 'اطلاعات بیشتر'}
                   </button>
 
-                  <div className={`transition-opacity duration-300 text-xs ${showDetails ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
+                  <div className={`transition-opacity duration-300 xs:text-xs text-[9px] ${showDetails ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
                   <p className="mt-1 flex justify-between">مقدار کربن مونوکسید: 
                      <span className="font-Dana-Bold"> {weatherData.air.list[0].components.co} μg/m³</span>
                   </p>
@@ -129,15 +129,17 @@ const MoreWeather = ()=>{
              
             </div>
            
-            <div className="border-r p-1 w-[250px] font-Morabba tracking-wide text-center text-balance">
+            <div className="md:border-r p-1 w-[250px] font-Morabba tracking-wide text-center text-balance">
                <h1>{AirDescription(weatherData.air.list[0].main.aqi)}</h1>
             </div>
          </div>
          {/* Forecast */}
         <div className="mt-5">
-            <div className="flex">
-            <ForecastSVG className="w-[300px] h-[130px]" />
-            <h1 className="text-3xl text-gray-200 mr-32 px-16 rounded flex items-center justify-center font-Dana bg-blue-600/20">پیش بینی آب و هوا</h1>
+            <div className="flex flex-col md:flex-row items-center  md:items-stretch justify-between">
+            <ForecastSVG className="md:w-[350px] w-[250px] md:mt-0 mt-6  h-[150px] md:h-[110px] lg:h-[130px] mx-auto" />
+            <h1 className="md:flex hidden md:text-lg lg:text-3xl text-gray-200 mr-32 lg:px-16 md:px-12 px-14 rounded  items-center justify-center font-Dana bg-blue-600/20">پیش بینی آب و هوا
+            </h1>
+            <h6 className="block md:hidden mt-2 text-2xl font-Morabba">پیشبینی آب و هوا</h6>
             </div>
 
                {/* AI */}
