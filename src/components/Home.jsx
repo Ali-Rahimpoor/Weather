@@ -1,7 +1,8 @@
-import { useState } from "react";
-
+import { WeatherContext } from "../Context/WeatherContext";
+import { useContext } from "react";
 const Home = ()=>{
-   const [selectedUnit,setSelectedUnit] = useState('');
+
+   const {unit,setUnit} = useContext(WeatherContext);
 
    return(
      <div className="container font-Dana-Regular">
@@ -19,24 +20,22 @@ const Home = ()=>{
             <div className="p-2 sm:text-base text-xs child:my-4">
             {/* Unit */}
             <div>
-               <div>نمایش دما به صورت :(در حال حاضر فقط به صورت سلیسوس)</div>
+               <div>نمایش دما به صورت :</div>
                <input 
                type="radio"
                name="units"
                value="metric"
-               // checked={selectedUnit==="metric"}
-               checked
-               onChange={e=>setSelectedUnit(e.target.value)}
+               checked={unit==="metric"}
+               onChange={e=>setUnit(e.target.value)}
                />
-               <span> سلیسوس </span>
+               <span> سلسیوس </span>
 
                <input 
                type="radio" 
                name="units"
                value='imperial'
-               checked={selectedUnit==="imperial"}
-               disabled
-               onChange={e=>setSelectedUnit(e.target.value)}
+               checked={unit==="imperial"}
+               onChange={e=>setUnit(e.target.value)}
                />
                <span> فارنهایت </span>
             </div> 

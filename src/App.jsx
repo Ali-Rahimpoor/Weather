@@ -4,7 +4,10 @@ import Search from "./components/Search";
 import {Routes,Route,useNavigate} from "react-router-dom";
 import Home from "./components/Home";
 import MoreWeather from "./components/MoreWeather";
+import { WeatherContext } from "./Context/WeatherContext";
+import { useState } from "react";
 function App() {
+  const [unit,setUnit] = useState('metric');
   const navigate = useNavigate();
 
   const handleCitySelect = (city)=>{
@@ -27,6 +30,12 @@ function App() {
         <Search onCitySelect={handleCitySelect} />
      </header>
      <main className=" h-[63vh] md:h-[60vh] ">
+      <WeatherContext.Provider 
+      value={{
+        unit,
+        setUnit
+      }}
+      >
       <Routes>
         <Route 
         path="weather/:city" 
@@ -37,6 +46,7 @@ function App() {
         path="/" 
         element={<Home/>}/>
       </Routes>
+      </WeatherContext.Provider>
      </main>
      <footer className="fixed bottom-0 -z-10 bg-gray-800 sm:h-auto w-full text-white  p-4">
       <div className="flex xs:flex-row flex-col justify-between text-xs sm:text-base items-center">

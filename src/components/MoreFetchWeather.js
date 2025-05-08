@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiKey ="154a39c34da780ca32eb7abde70be2f5";
 
-export const MoreFetchWeather = async (city)=>{
+export const MoreFetchWeather = async (city,unit="metric")=>{
 try{
    // 2.5/weather => Default
    // 2.5/forecast => ForeCast
@@ -14,7 +14,7 @@ try{
          params:{
             q:city,
             appid: apiKey,
-            units: "metric",
+            units: unit,
             lang: 'fa' 
          }
       }
@@ -41,7 +41,7 @@ try{
          lat,
          lon,
          appid:apiKey,
-         units:'metric',
+         units:unit,
          lang:'fa',
          cnt:40
        }  

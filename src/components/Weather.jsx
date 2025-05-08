@@ -4,17 +4,19 @@ import { useParams,Link } from "react-router-dom";
 import Loading from "./fragment/Loading";
 import Error from "./fragment/Error";
 import { LuSunMedium } from "react-icons/lu";
+import { useContext } from "react";
+import { WeatherContext } from "../Context/WeatherContext";
 const Weather = () => {
   const {city} = useParams();
   const [weatherData,setWeatherData] = useState(null)
   const [loading,setLoading] = useState(true);
   const [error,setError] = useState(null);
-
+  const {unit} = useContext(WeatherContext);
   useEffect(()=>{
     const getWeather = async ()=>{
       try{
       setLoading(true);
-      const data = await FetchWeather(city);
+      const data = await FetchWeather(city,unit);
       setWeatherData(data.weather);
       setError(null);
     }catch(err){
@@ -62,7 +64,7 @@ const Weather = () => {
           {/* Temp */}
           <div className="sm:text-3xl text-xl shadow bg-gradient-to-tr from-blue-200 to-blue-300 rounded-xl sm:py-6 sm:px-8 px-4 py-5 my-5 text-gray-700 font-Dana sm:hover:shadow-xl sm:transition-all sm:cursor-none">
             <p>دما : 
-              <span>{Math.round(weatherData.main.temp)} °C</span>
+              <span>{Math.round(weatherData.main.temp)}{unit ==="metric"?(<span> °C </span>):(<span> °F </span>)}</span>
             </p>
           </div>
           {/* Hum & Wind */}

@@ -6,7 +6,10 @@ import Loading from "./fragment/Loading";
 import Error from "./fragment/Error";
 import GifURLPollution from "../assets/gif/Animation - 1744872073203.gif";
 import {ReactComponent as ForecastSVG} from "../assets/svgs/undraw_weather_7n28.svg";
+import { useContext } from "react";
+import { WeatherContext } from "../Context/WeatherContext";
 const MoreWeather = ()=>{
+   const {unit} = useContext(WeatherContext);
    const {city} = useParams();
    const [weatherData, setWeatherData] = useState(null);
    const [loading, setLoading] = useState(true);
@@ -16,7 +19,7 @@ const MoreWeather = ()=>{
       const getWeather = async()=>{
          try{
             setLoading(true);
-            const data = await MoreFetchWeather(city);
+            const data = await MoreFetchWeather(city,unit);
             if(!data){
                throw new Error("NOT FOUND DATA")
             }
@@ -172,7 +175,7 @@ const MoreWeather = ()=>{
                {mainWeather}
             </p>
             <p className="text-blue-700 text-xl font-Dana-Bold mt-1">
-               {avgTemp.toFixed(1)}°C
+               {avgTemp.toFixed(1)}{unit ==='metric' ? (<span> °C </span>):(<span> °F </span>)}
             </p>
          </div>);})}
             </div>
