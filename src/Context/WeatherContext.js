@@ -5,4 +5,6 @@ export const WeatherContext = createContext({
    setUnit:()=>{},
    darkMode:{},
    setDarkMode:()=>{},
+   weatherData:{},
+   setWeatherData:()=>{},
 })

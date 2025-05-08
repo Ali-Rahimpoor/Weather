@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { FetchWeather } from "./FetchWeather";
+import { useFetchWeather } from "../hooks/useFetchWeather";
 import { useParams,Link } from "react-router-dom";
 import Loading from "./fragment/Loading";
 import Error from "./fragment/Error";
@@ -12,6 +12,7 @@ const Weather = () => {
   const [loading,setLoading] = useState(true);
   const [error,setError] = useState(null);
   const {unit} = useContext(WeatherContext);
+  const FetchWeather = useFetchWeather();
   useEffect(()=>{
     const getWeather = async ()=>{
       try{

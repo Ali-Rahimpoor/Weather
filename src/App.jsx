@@ -13,7 +13,7 @@ function App() {
   const [unit,setUnit] = useState('metric');
   const [darkMode,setDarkMode] = useState(false);
   const navigate = useNavigate();
-
+  const [weatherData,setWeatherData] = useState({});
   const handleCitySelect = (city)=>{
     navigate(`/weather/${city}`);
   };
@@ -54,7 +54,9 @@ function App() {
         unit,
         setUnit,
         darkMode,
-        setDarkMode
+        setDarkMode,
+        weatherData,
+        setWeatherData
       }}
       >
       <Routes>

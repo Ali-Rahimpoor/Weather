@@ -1,27 +1,14 @@
 import axios from "axios";
-
+import { useContext } from "react";
+import { WeatherContext } from "../Context/WeatherContext";
 const apiKey ="154a39c34da780ca32eb7abde70be2f5";
-
-export const MoreFetchWeather = async (city,unit="metric")=>{
+export const useMoreFetchWeather = ()=>{
+   const {weatherData} = useContext(WeatherContext);
+ const MoreFetchWeather = async (unit="metric")=>{
 try{
-   // 2.5/weather => Default
-   // 2.5/forecast => ForeCast
-   // 2.5/air_pollution => Air Pollution
-   // /3.0/onecall => new 
-   // units : metric 0C ,,,, imperial 0F
-   const weatherRes = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather`,{
-         params:{
-            q:city,
-            appid: apiKey,
-            units: unit,
-            lang: 'fa' 
-         }
-      }
-   );
-
-   const weatherData = weatherRes.data;
-   const {lat,lon} = weatherData.coord;
+   
+   const weather = weatherData;
+   const {lat,lon} = weather.coord;
 
    const pollutionRes = await axios.get(
       `https://api.openweathermap.org/data/2.5/air_pollution`,{
@@ -51,7 +38,7 @@ try{
    const foreCastData = forecastRes.data;
 
    return {
-      weather: weatherData,
+      weather,
       air : airData,
       forecast: foreCastData
    };
@@ -59,4 +46,6 @@ try{
    console.error(error.response ? error.response.data : error.message)
    return null;
 }
+}
+return MoreFetchWeather;
 }

@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { MoreFetchWeather } from "./MoreFetchWeather";
+import { useMoreFetchWeather } from "../hooks/useMoreFetchWeather";
 import { useState } from "react";
 import Loading from "./fragment/Loading";
 import Error from "./fragment/Error";
@@ -8,18 +7,20 @@ import GifURLPollution from "../assets/gif/Animation - 1744872073203.gif";
 import {ReactComponent as ForecastSVG} from "../assets/svgs/undraw_weather_7n28.svg";
 import { useContext } from "react";
 import { WeatherContext } from "../Context/WeatherContext";
+import { useParams } from "react-router-dom";
 const MoreWeather = ()=>{
    const {unit} = useContext(WeatherContext);
-   const {city} = useParams();
    const [weatherData, setWeatherData] = useState(null);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
    const [showDetails,setShowDetails] = useState(true);
+   const MoreFetchWeather = useMoreFetchWeather();
+   const {city} = useParams();
    useEffect(()=>{
       const getWeather = async()=>{
          try{
             setLoading(true);
-            const data = await MoreFetchWeather(city,unit);
+            const data = await MoreFetchWeather(unit);
             if(!data){
                throw new Error("NOT FOUND DATA")
             }
