@@ -82,7 +82,7 @@ const MoreWeather = ()=>{
    }
 
  return (
-   <section className="text-gray-800 overflow-y-scroll h-full md:mt-3 shadow bg-blue-300 p-4 font-Dana-Regular w-full md:w-[760px] lg:w-[900px] mx-auto">
+   <section className="text-gray-800 overflow-y-scroll h-full md:mt-3 shadow dark:text-gray-900 dark:bg-slate-500 bg-blue-300 p-4 font-Dana-Regular w-full md:w-[760px] lg:w-[900px] mx-auto">
       <header className=" line-clamp-1 p-3 rounded text-center text-base md:text-lg text-gray-700 bg-white/20">
          <p>بررسی دقیق تر <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.name}</span> از <span className="font-Dana-Bold text-gray-800">{weatherData.forecast.city.country}</span>
          </p>

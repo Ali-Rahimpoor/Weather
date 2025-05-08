@@ -25,10 +25,10 @@ const Search = ({onCitySelect})=>{
    
 
    return(
-      <div className="flex items-center justify-between gap-x-1">
+      <div className="flex items-center justify-between gap-x-1 ">
        {/* Selection */}
        <div id="dropDown">
-      <button  className="flex items-center text-gray-600 bg-sky-200 px-2 py-3 ml-2 rounded sm:text-base text-xs rounded-b-none" >
+      <button  className="flex items-center text-gray-700 dark:bg-sky-200 bg-sky-300 px-2 py-3 ml-2 rounded sm:text-base text-xs rounded-b-none" >
         <span className="sm:inline hidden">شهر های محبوب</span>
         <span className="sm:hidden inline">انتخاب</span>
         <GoChevronDown id='chevron' className="sm:size-5 size-4 transition-transform" />
@@ -47,14 +47,14 @@ const Search = ({onCitySelect})=>{
         </div>
       {/* Search */}
       <div 
-      className="flex items-center rounded overflow-hidden p-3 text-sm sm:text-base bg-slate-50">
+      className="flex items-center rounded overflow-hidden p-3 text-sm sm:text-base dark:bg-zinc-400 bg-slate-50">
         <input 
         value={city}
         onChange={e=>setCity(e.target.value)}
         onKeyDown={handleKeyPress}
         placeholder="نام شهر را وارد کنید"
         type="text" 
-        className="bg-slate-50 focus:border-none focus:outline-none sm:w-[300px]" />
+        className="bg-slate-50 dark:placeholder:text-gray-700 font-Dana dark:text-gray-800  dark:bg-zinc-400 focus:border-none focus:outline-none sm:w-[300px]" />
         <CiSearch 
         className=" size-5  sm:size-6 sm:transition-all sm:hover:size-7 sm:cursor-pointer "
         onClick={searchCity}

@@ -5,7 +5,7 @@ const Home = ()=>{
    const {unit,setUnit} = useContext(WeatherContext);
 
    return(
-     <div className="container font-Dana-Regular">
+     <div className="container  font-Dana-Regular">
      <section>
          <h1 className="text-center mt-3 text-lg hidden sm:block">برای نمایش اطلاعات آب و هوایی شهر مورد نظر خود نام آن را وارد کنید
 

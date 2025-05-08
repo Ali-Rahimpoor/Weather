@@ -39,7 +39,7 @@
       @apply relative sm:w-[160px] w-[80px];
    }
    #dropDown-content{
-      @apply w-[70px] sm:h-[90px] h-[77px] overflow-y-scroll sm:w-[150px] shadow-xl text-gray-500 p-1  flex-col items-center gap-1 opacity-0 transition-all absolute top-0 hidden;
+      @apply w-[70px] sm:h-[90px] h-[77px] overflow-y-scroll sm:w-[150px] shadow-xl dark:text-gray-300 text-gray-500 p-1  flex-col items-center gap-1 opacity-0 transition-all absolute top-0 hidden;
    }
    #dropDown:hover  #dropDown-content{
       @apply flex visible sm:top-12 top-10 opacity-100;
