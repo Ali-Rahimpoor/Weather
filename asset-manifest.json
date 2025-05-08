@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Weather/static/css/main.074a9d25.css",
-    "main.js": "/Weather/static/js/main.e2ff1553.js",
+    "main.js": "/Weather/static/js/main.c2591be8.js",
     "static/media/Animation - 1744872073203.gif": "/Weather/static/media/Animation - 1744872073203.ee1267caa32802018492.gif",
     "static/media/IRANMarker.ttf": "/Weather/static/media/IRANMarker.bc959ee914f530ff6e61.ttf",
     "static/media/DanaFaNum-DemiBold.woff2": "/Weather/static/media/DanaFaNum-DemiBold.606ee4ede1f9de62b0bc.woff2",
@@ -16,10 +16,10 @@
     "static/media/undraw_cabin_7fei.svg": "/Weather/static/media/undraw_cabin_7fei.abca005eab0ed08f03e56c190b3d94fe.svg",
     "index.html": "/Weather/index.html",
     "main.074a9d25.css.map": "/Weather/static/css/main.074a9d25.css.map",
-    "main.e2ff1553.js.map": "/Weather/static/js/main.e2ff1553.js.map"
+    "main.c2591be8.js.map": "/Weather/static/js/main.c2591be8.js.map"
   },
   "entrypoints": [
     "static/css/main.074a9d25.css",
-    "static/js/main.e2ff1553.js"
+    "static/js/main.c2591be8.js"
   ]
 }
